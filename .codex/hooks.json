@@ -1,0 +1,9 @@
+{
+  "hooks": {
+    "SessionStart": [{ "hooks": [{ "type": "command", "command": "./.bearing/hooks/codex-session.sh", "timeout": 10 }] }],
+    "PreToolUse": [{ "matcher": "Bash", "hooks": [{ "type": "command", "command": "./.bearing/hooks/codex-pretool.sh", "timeout": 10 }] }],
+    "PostToolUse": [{ "matcher": "apply_patch", "hooks": [{ "type": "command", "command": "./.bearing/hooks/codex-edit.sh", "timeout": 60 }] }],
+    "PreCompact": [{ "hooks": [{ "type": "command", "command": "./.bearing/hooks/codex-precompact.sh", "timeout": 15 }] }],
+    "Stop": [{ "hooks": [{ "type": "command", "command": "./.bearing/hooks/codex-stop.sh", "timeout": 15 }] }]
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "version": 1,
+  "hooks": {
+    "sessionStart": [{ "type": "command", "bash": "./.bearing/hooks/copilot-session.sh", "timeoutSec": 10 }],
+    "preToolUse": [{ "type": "command", "bash": "./.bearing/hooks/copilot-pretool.sh", "matcher": "bash", "timeoutSec": 10 }]
+  }
+}
