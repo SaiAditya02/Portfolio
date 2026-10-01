@@ -1,7 +1,8 @@
 import { useEffect, useMemo, useState, type FormEvent } from 'react'
 import './App.css'
 import ThemeSwitcher from './components/ThemeSwitcher'
-import profileAvatar from './assets/99537126.png'
+import profileAvatar from './assets/ChatGPT Image 1.png'
+import heroProfileImage from './assets/ChatGPT Image.png'
 import {
   aboutPoints,
   experience,
@@ -222,22 +223,8 @@ function App() {
               </div>
             </div>
 
-            <div className="hero-visual" aria-label="Abstract software system diagram">
-              <div className="visual-core">
-                <div className="signal signal-a" />
-                <div className="signal signal-b" />
-                <div className="signal signal-c" />
-                <div className="signal signal-d" />
-                <div className="node ui-node">UI</div>
-                <div className="node api-node">API</div>
-                <div className="node data-node">DATA</div>
-                <div className="node qa-node">QA</div>
-                <div className="node app-node">APP</div>
-                <div className="data-stream stream-1" />
-                <div className="data-stream stream-2" />
-                <div className="data-stream stream-3" />
-                <div className="data-stream stream-4" />
-              </div>
+            <div className="hero-visual" aria-label="Sai Aditya profile picture">
+              <img className="hero-profile-image" src={heroProfileImage} alt="Sai Aditya" />
             </div>
           </div>
         </section>
