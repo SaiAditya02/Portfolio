@@ -75,9 +75,9 @@ export const navItems: NavItem[] = [
 ];
 
 export const metrics: Metric[] = [
-  { value: '01+', label: 'YEARS IN QA' },
+  { value: '1.5+', label: 'YEARS IN QA' },
   { value: '03', label: 'AI TOOLS IN DAILY USE' },
-  { value: '04+', label: 'PRODUCT / SYSTEMS TESTED' },
+  { value: '04+', label: 'PRODUCTS TESTED IN PRODUCTION' },
 ];
 
 export const aboutPoints: AboutPoint[] = [
@@ -120,14 +120,40 @@ export const aboutPoints: AboutPoint[] = [
 
 export const experience: ExperienceEntry[] = [
   {
-    company: 'Apxor Technology Solutions',
+    company: 'Deepta AI',
     role: 'QA Engineer 1',
+    duration: 'Aug 2025 – Present',
+    product: 'EdTech CRM with application, loan and LMS modules',
+    responsibilities: [
+      'Validated end-to-end payment gateway integrations, confirming 99.9% financial data accuracy.',
+      'Tested the complete student lifecycle across CRM, admissions, and academics for 10,000+ students annually.',
+      'Razorpay & EaseBuzz payment flow validation across 50+ scenarios.',
+      'Cross-module data consistency testing: CRM → Admissions → Academics.',
+      'Analytics dashboard data accuracy & funnel conversion validation.',
+      'Sprint reviews, UAT coordination, and stakeholder bug reporting.',
+    ],
+    testingScope: [
+      'End-to-end testing',
+      'Integration validation',
+      'Analytics QA',
+      'UAT support',
+      'Data accuracy checks',
+      'Cross-module regression',
+      'Payment gateway testing',
+    ],
+    tools: ['Jira', 'Postman', 'Razorpay', 'EaseBuzz', 'Moodle', 'Canvas'],
+  },
+  {
+    company: 'Apxor Technology Solutions',
+    role: 'Associate QA Engineer',
     duration: 'Jan 2025 – Aug 2025',
     product: 'FinTech + EdTech platforms',
     responsibilities: [
-      'Designed and executed functional, regression and exploratory testing across multi-role user flows.',
-      'Validated business logic for lending eligibility, applicant flows, institutional workflows and status transitions.',
-      'Worked with product and engineering teams to identify edge cases in UI behavior, API responses and data continuity.',
+      'Built 15 regression suites cutting bug escapes by 40%.',
+      'Led UAT across 3+ product cycles and automated test scripts for 6 key features.',
+      'OAuth & Truecaller integration testing across device/network conditions.',
+      '6 automated test scripts for high-risk feature paths.',
+      'UAT lead across 3 product cycles with direct stakeholder coordination.',
     ],
     testingScope: [
       'Manual testing',
@@ -139,29 +165,96 @@ export const experience: ExperienceEntry[] = [
     ],
     tools: ['Jira', 'Confluence', 'Postman', 'Excel', 'TestRail'],
   },
-  {
-    company: 'Deepa AI',
-    role: 'QA Engineer 1',
-    duration: 'Aug 2025 – Present',
-    product: 'EdTech CRM with application, loan and LMS modules',
-    responsibilities: [
-      'Validate cross-module workflows spanning admissions, payments, fee disbursement, enrollment and course access.',
-      'Trace workflow integrity across CRM, payment gateways, LMS integrations and reconciliation logic.',
-      'Support product quality by testing integrations and investigating mismatches in data, status transitions and user-visible behavior.',
-    ],
-    testingScope: [
-      'End-to-end testing',
-      'Integration validation',
-      'Analytics QA',
-      'UAT support',
-      'Data accuracy checks',
-      'Cross-module regression',
-    ],
-    tools: ['Jira', 'Postman', 'Razorpay', 'EaseBuzz', 'Moodle', 'Canvas'],
-  },
 ];
 
 export const projects: Project[] = [
+  {
+    title: 'Analytics Dashboard',
+    company: 'Deepta AI',
+    duration: '2025',
+    domain: 'Internal BI Tool',
+    description:
+      'Validated the business intelligence layer surfaced to stakeholders — funnel conversion rates, retention curves, MAU breakdowns, and revenue performance charts. Tested every data point against backend sources to ensure what decision-makers saw was exactly what was happening in the product.',
+    role: 'QA Engineer',
+    testingScope: [
+      'Funnel conversion rates',
+      'Retention curves',
+      'MAU breakdowns',
+      'Revenue performance charts',
+      'Analytics metrics',
+      'Dashboard behavior',
+      'Backend data validation',
+      'Data accuracy',
+      'Visualization behavior',
+    ],
+    challenges: [
+      'Ensuring the dashboard reflected accurate business metrics rather than visually correct but data-inaccurate reports.',
+      'Checking how values flowed from UI through API to backend data and visualization logic.',
+      'Testing chart behavior for inconsistent or delayed data conditions.',
+    ],
+    approach: [
+      'Validated the data path end-to-end: UI → API → backend → database → analytics layer.',
+      'Checked both the visible dashboard output and the underlying metric integrity behind it.',
+      'Used analytics QA to look for mismatches in calculations, segmentation and time-based reporting.',
+    ],
+    tools: ['Jira', 'Postman', 'Excel', 'Analytics QA', 'Data Validation'],
+    edgeCases: [
+      'Metric drift across filters and time ranges',
+      'Visualization mismatch from backend values',
+      'MAU and funnel anomalies',
+      'Revenue chart errors caused by delayed or inconsistent data',
+    ],
+    outcome:
+      'Helped validate that stakeholder-facing metrics were consistent, interpretable and grounded in system data rather than presentation alone.',
+    tags: ['Analytics QA', 'Data Accuracy', 'Revenue Charts', 'MAU Metrics', 'Funnel Validation', 'Dashboard QA'],
+  },
+  {
+    title: 'EdTech CRM',
+    company: 'Deepta AI',
+    duration: 'Aug 2025 – Present',
+    domain: 'EdTech Platform',
+    description:
+      'An end-to-end student lifecycle platform consolidating Application Management, Multi Loan Management, and Learning Management (Moodle & Canvas integrations) under a single CRM. Validated the complete pipeline from lead capture to enrollment — testing Razorpay and EaseBuzz payment flows, cross-module data consistency, fee collection workflows, and LMS sync accuracy across 10,000+ students annually.',
+    role: 'QA Engineer 1',
+    testingScope: [
+      'Lead capture',
+      'Admission pipeline',
+      'Form workflows',
+      'Status tracking',
+      'Razorpay payment flows',
+      'EaseBuzz payment flows',
+      'Multi-vendor fee disbursement',
+      'Repayment validation',
+      'Reconciliation',
+      'Fee collection workflows',
+      'Moodle integration',
+      'Canvas integration',
+      'Enrollment synchronization',
+      'Course access',
+      'Grade data integrity',
+      'Cross-module consistency',
+    ],
+    challenges: [
+      'Maintaining data integrity across CRM, payment integrations and LMS modules.',
+      "Validating multi-step processes where one module's status or data affects another.",
+      'Checking end-to-end workflow quality across payments, access controls and grade syncs.',
+    ],
+    approach: [
+      'Mapped critical transitions from lead capture through admissions, financial operations and learning access.',
+      'Validated integration points and workflow continuity rather than treating each module in isolation.',
+      'Focused on reconciliation, enrollment and access logic where data mismatches become visible to users.',
+    ],
+    tools: ['Jira', 'Postman', 'Razorpay', 'EaseBuzz', 'Moodle', 'Canvas', 'Excel'],
+    edgeCases: [
+      'Failed payment reconciliation',
+      'Enrollment sync delays',
+      'Course access gating mismatches',
+      'Grade and student record integrity issues',
+    ],
+    outcome:
+      'Supported quality across a multi-module student lifecycle system by validating data integrity, integration behavior and operational transitions.',
+    tags: ['CRM', 'Payments', 'LMS Integration', 'Moodle', 'Canvas', 'E2E Testing', '10K+ Students'],
+  },
   {
     title: 'Multi-Loan Vendor Indication System',
     company: 'Apxor Technology Solutions',
@@ -246,93 +339,6 @@ export const projects: Project[] = [
     outcome:
       'Improved confidence in onboarding and core community workflows while identifying and validating issues that could affect real user engagement.',
     tags: ['EdTech', 'Community', 'Auth', 'Q&A', 'Regression', 'Network Variants'],
-  },
-  {
-    title: 'EdTech CRM',
-    company: 'Deepa AI',
-    duration: 'Aug 2025 – Present',
-    domain: 'EdTech Platform',
-    description:
-      'An end-to-end student lifecycle platform consolidating application management, multi-loan management and learning management under a single CRM.',
-    role: 'QA Engineer',
-    testingScope: [
-      'Lead capture',
-      'Admission pipeline',
-      'Form workflows',
-      'Status tracking',
-      'Razorpay payment flows',
-      'EaseBuzz payment flows',
-      'Multi-vendor fee disbursement',
-      'Repayment validation',
-      'Reconciliation',
-      'Fee collection workflows',
-      'Moodle integration',
-      'Canvas integration',
-      'Enrollment synchronization',
-      'Course access',
-      'Grade data integrity',
-      'Cross-module consistency',
-    ],
-    challenges: [
-      'Maintaining data integrity across CRM, payment integrations and LMS modules.',
-      'Validating multi-step processes where one module’s status or data affects another.',
-      'Checking end-to-end workflow quality across payments, access controls and grade syncs.',
-    ],
-    approach: [
-      'Mapped critical transitions from lead capture through admissions, financial operations and learning access.',
-      'Validated integration points and workflow continuity rather than treating each module in isolation.',
-      'Focused on reconciliation, enrollment and access logic where data mismatches become visible to users.',
-    ],
-    tools: ['Jira', 'Postman', 'Razorpay', 'EaseBuzz', 'Moodle', 'Canvas', 'Excel'],
-    edgeCases: [
-      'Failed payment reconciliation',
-      'Enrollment sync delays',
-      'Course access gating mismatches',
-      'Grade and student record integrity issues',
-    ],
-    outcome:
-      'Supported quality across a multi-module student lifecycle system by validating data integrity, integration behavior and operational transitions.',
-    tags: ['CRM', 'Payments', 'LMS Integration', 'Moodle', 'Canvas', 'E2E Testing'],
-  },
-  {
-    title: 'Analytics Dashboard',
-    company: 'Deepa AI',
-    duration: '2025',
-    domain: 'Internal BI Tool',
-    description:
-      'Validated the business intelligence layer surfaced to stakeholders, covering dashboards, conversions and revenue-related reporting.',
-    role: 'QA Engineer',
-    testingScope: [
-      'Funnel conversion rates',
-      'Retention curves',
-      'MAU breakdowns',
-      'Revenue performance charts',
-      'Analytics metrics',
-      'Dashboard behavior',
-      'Backend data validation',
-      'Data accuracy',
-      'Visualization behavior',
-    ],
-    challenges: [
-      'Ensuring the dashboard reflected accurate business metrics rather than visually correct but data-inaccurate reports.',
-      'Checking how values flowed from UI through API to backend data and visualization logic.',
-      'Testing chart behavior for inconsistent or delayed data conditions.',
-    ],
-    approach: [
-      'Validated the data path end-to-end: UI → API → backend → database → analytics layer.',
-      'Checked both the visible dashboard output and the underlying metric integrity behind it.',
-      'Used analytics QA to look for mismatches in calculations, segmentation and time-based reporting.',
-    ],
-    tools: ['Jira', 'Postman', 'Excel', 'Analytics QA', 'Data Validation'],
-    edgeCases: [
-      'Metric drift across filters and time ranges',
-      'Visualization mismatch from backend values',
-      'MAU and funnel anomalies',
-      'Revenue chart errors caused by delayed or inconsistent data',
-    ],
-    outcome:
-      'Helped validate that stakeholder-facing metrics were consistent, interpretable and grounded in system data rather than presentation alone.',
-    tags: ['Analytics QA', 'Data Accuracy', 'Revenue Charts', 'MAU Metrics', 'Funnel Validation', 'Dashboard QA'],
   },
 ];
 
@@ -446,8 +452,8 @@ export const techStack = [
 ];
 
 export const socials: SocialLink[] = [
-  { label: 'GitHub', href: 'https://github.com' },
-  { label: 'LinkedIn', href: 'https://linkedin.com' },
-  { label: 'Email', href: 'mailto:saiaditya.qa@example.com' },
-  { label: 'Resume', href: '/resume.pdf' },
+  { label: 'GitHub', href: 'https://github.com/SaiAditya02' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/sai-aditya-garimella-93aa282b3' },
+  { label: 'Email', href: 'mailto:sapgarimella@gmail.com' },
+  { label: 'Resume', href: '/SaiAdityaResume.pdf' },
 ];

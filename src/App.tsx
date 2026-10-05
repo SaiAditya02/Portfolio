@@ -138,7 +138,7 @@ function App() {
             ))}
           </div>
 
-          <a className="profile-resume-link" href="/resume.pdf" target="_blank" rel="noreferrer">
+          <a className="profile-resume-link" href="/SaiAdityaResume.pdf" target="_blank" rel="noreferrer">
             DOWNLOAD RESUME <span aria-hidden="true">↗</span>
           </a>
         </aside>
@@ -159,7 +159,7 @@ function App() {
             <ThemeSwitcher />
           </div>
 
-          <a className="resume-link" href="/resume.pdf" target="_blank" rel="noreferrer">
+          <a className="resume-link" href="/SaiAdityaResume.pdf" target="_blank" rel="noreferrer">
             DOWNLOAD RESUME <span aria-hidden="true">→</span>
           </a>
         </nav>
@@ -205,10 +205,10 @@ function App() {
                 <a className="secondary-cta" href="#projects">
                   SEE MY WORK <span aria-hidden="true">→</span>
                 </a>
-                <a className="secondary-cta" href="/resume.pdf" target="_blank" rel="noreferrer">
+                <a className="secondary-cta" href="/SaiAdityaResume.pdf" target="_blank" rel="noreferrer">
                   VIEW RESUME <span aria-hidden="true">→</span>
                 </a>
-                <a className="secondary-cta" href="/resume.pdf" target="_blank" rel="noreferrer">
+                <a className="secondary-cta" href="/SaiAdityaResume.pdf" target="_blank" rel="noreferrer">
                   DOWNLOAD RESUME <span aria-hidden="true">→</span>
                 </a>
               </div>
