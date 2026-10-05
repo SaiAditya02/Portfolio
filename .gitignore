@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Bearing
+.scratch/
+.bearing/state/
+.claude/settings.local.json

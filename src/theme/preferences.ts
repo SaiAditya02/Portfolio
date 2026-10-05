@@ -1,3 +1,5 @@
+// public/theme-init.js repeats these options, defaults and storage keys so it
+// can run before React loads. Keep both files in sync.
 export const paletteOptions = [
   { id: 'theme_monochrome_editorial', label: 'Monochrome Editorial' },
   { id: 'theme_amber_telemetry', label: 'Amber Telemetry' },

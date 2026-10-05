@@ -1,10 +1,11 @@
 import { useEffect, useMemo, useState, type FormEvent } from 'react'
 import './App.css'
 import ThemeSwitcher from './components/ThemeSwitcher'
-import profileAvatar from './assets/ChatGPT Image 1.png'
-import heroProfileImage from './assets/ChatGPT Image.png'
+import profileAvatar from './assets/avatar.png'
+import heroProfileImage from './assets/hero-profile.png'
 import {
   aboutPoints,
+  contact,
   experience,
   flowSteps,
   metrics,
@@ -15,6 +16,9 @@ import {
   socials,
   techStack,
 } from './data/portfolio'
+
+const phoneHref = `tel:${contact.phone.replace(/\s/g, '')}`
+const socialHref = (label: string) => socials.find((social) => social.label === label)?.href
 
 function App() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -27,7 +31,7 @@ function App() {
     message: '',
   })
   const [errors, setErrors] = useState<Record<string, string>>({})
-  const [formState, setFormState] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+  const [formState, setFormState] = useState<'idle' | 'success' | 'error'>('idle')
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 12)
@@ -96,12 +100,9 @@ function App() {
       return
     }
 
-    setFormState('loading')
-
-    window.setTimeout(() => {
-      setFormState('success')
-      setFormData({ name: '', email: '', subject: '', message: '' })
-    }, 700)
+    const body = `${formData.message.trim()}\n\n${formData.name.trim()}\n${formData.email.trim()}`
+    window.location.href = `mailto:${contact.email}?subject=${encodeURIComponent(formData.subject.trim())}&body=${encodeURIComponent(body)}`
+    setFormState('success')
   }
 
   return (
@@ -113,22 +114,22 @@ function App() {
             <div className="profile-copy">
               <span className="profile-role">QA ENGINEER 1</span>
               <h2>SAI ADITYA</h2>
-              <p>Hyderabad, India</p>
+              <p>{contact.location}</p>
             </div>
           </div>
 
           <div className="profile-details">
-            <a href="mailto:saiaditya.qa@example.com">
+            <a href={`mailto:${contact.email}`}>
               <span>Email</span>
-              <span>saiaditya.qa@example.com</span>
+              <span>{contact.email}</span>
             </a>
-            <a href="tel:+919999999999">
+            <a href={phoneHref}>
               <span>Phone</span>
-              <span>+91 99999 99999</span>
+              <span>{contact.phone}</span>
             </a>
             <span>
               <span>Location</span>
-              <span>Hyderabad, India</span>
+              <span>{contact.location}</span>
             </span>
           </div>
 
@@ -138,7 +139,7 @@ function App() {
             ))}
           </div>
 
-          <a className="profile-resume-link" href="/SaiAdityaResume.pdf" target="_blank" rel="noreferrer">
+          <a className="profile-resume-link" href="/SaiAdityaResume.pdf" download>
             DOWNLOAD RESUME <span aria-hidden="true">↗</span>
           </a>
         </aside>
@@ -159,7 +160,7 @@ function App() {
             <ThemeSwitcher />
           </div>
 
-          <a className="resume-link" href="/SaiAdityaResume.pdf" target="_blank" rel="noreferrer">
+          <a className="resume-link" href="/SaiAdityaResume.pdf" download>
             DOWNLOAD RESUME <span aria-hidden="true">→</span>
           </a>
         </nav>
@@ -208,7 +209,7 @@ function App() {
                 <a className="secondary-cta" href="/SaiAdityaResume.pdf" target="_blank" rel="noreferrer">
                   VIEW RESUME <span aria-hidden="true">→</span>
                 </a>
-                <a className="secondary-cta" href="/SaiAdityaResume.pdf" target="_blank" rel="noreferrer">
+                <a className="secondary-cta" href="/SaiAdityaResume.pdf" download>
                   DOWNLOAD RESUME <span aria-hidden="true">→</span>
                 </a>
               </div>
@@ -258,9 +259,9 @@ function App() {
             </div>
 
             <div className="thinking-steps">
-              {aboutPoints.map(({ id, title, description }) => (
+              {aboutPoints.map(({ id, title, description }, index) => (
                 <div key={id} className="thinking-card">
-                  <span className="card-index">{String(aboutPoints.indexOf(aboutPoints.find((point) => point.id === id) ?? aboutPoints[0]) + 1).padStart(2, '0')}</span>
+                  <span className="card-index">{String(index + 1).padStart(2, '0')}</span>
                   <div>
                     <h3>{title}</h3>
                     <p>{description}</p>
@@ -341,7 +342,7 @@ function App() {
                 <summary>
                   <div className="project-summary">
                     <div>
-                      <span className="project-index">0{index + 1}</span>
+                      <span className="project-index">{String(index + 1).padStart(2, '0')}</span>
                       <h3>{project.title}</h3>
                     </div>
                     <div className="project-meta">
@@ -585,11 +586,11 @@ function App() {
               </p>
 
               <div className="contact-list">
-                <a href="mailto:saiaditya.qa@example.com">Email: saiaditya.qa@example.com</a>
-                <a href="https://linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a>
-                <a href="https://github.com" target="_blank" rel="noreferrer">GitHub</a>
-                <a href="tel:+919999999999">Phone: +91 99999 99999</a>
-                <span>Location: Hyderabad, India</span>
+                <a href={`mailto:${contact.email}`}>Email: {contact.email}</a>
+                <a href={socialHref('LinkedIn')} target="_blank" rel="noreferrer">LinkedIn</a>
+                <a href={socialHref('GitHub')} target="_blank" rel="noreferrer">GitHub</a>
+                <a href={phoneHref}>Phone: {contact.phone}</a>
+                <span>Location: {contact.location}</span>
               </div>
             </div>
 
@@ -640,13 +641,13 @@ function App() {
                 {errors.message && <small>{errors.message}</small>}
               </label>
 
-              <button type="submit" className="submit-button" disabled={formState === 'loading'}>
-                {formState === 'loading' ? 'SENDING...' : 'SEND MESSAGE →'}
+              <button type="submit" className="submit-button">
+                SEND MESSAGE →
               </button>
 
               {formState === 'success' && (
                 <p className="form-message success" aria-live="polite">
-                  Message drafted successfully. Connect this form to your email backend to send live submissions.
+                  Your email app should open with the message ready to send.
                 </p>
               )}
 

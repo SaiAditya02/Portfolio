@@ -1,3 +1,5 @@
+// Runs before React to avoid a theme flash. Keep these lists, defaults and
+// storage keys in sync with src/theme/preferences.ts.
 (() => {
   const palettes = [
     'theme_monochrome_editorial',

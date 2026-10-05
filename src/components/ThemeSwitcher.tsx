@@ -16,7 +16,7 @@ function ThemeSwitcher() {
   const [preferences, setPreferences] = useState(readPreferences)
   const [isMounted, setIsMounted] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
-    const [popoverPosition, setPopoverPosition] = useState({ top: 0, right: 12, width: 320 })
+  const [popoverPosition, setPopoverPosition] = useState({ top: 0, right: 12, width: 320 })
   const controlRef = useRef<HTMLDivElement>(null)
   const popoverRef = useRef<HTMLDivElement>(null)
   const triggerRef = useRef<HTMLButtonElement>(null)
@@ -54,12 +54,12 @@ function ThemeSwitcher() {
 
     const viewportWidth = document.documentElement.clientWidth
     const viewportHeight = document.documentElement.clientHeight
-      const width = Math.max(200, Math.min(320, viewportWidth - 24))
+    const width = Math.max(200, Math.min(320, viewportWidth - 24))
     const maxRight = Math.max(12, viewportWidth - width - 12)
     const right = Math.min(maxRight, Math.max(12, viewportWidth - bounds.right))
     const maxTop = Math.max(12, viewportHeight - 272)
     const top = Math.min(maxTop, Math.max(12, bounds.bottom + 9))
-      setPopoverPosition({ top, right, width })
+    setPopoverPosition({ top, right, width })
   }, [])
 
   const open = () => {
@@ -170,11 +170,11 @@ function ThemeSwitcher() {
           role="dialog"
           aria-labelledby="appearance-popover-title"
           aria-hidden={!isOpen}
-            style={{
-              top: popoverPosition.top,
-              right: popoverPosition.right,
-              width: popoverPosition.width,
-            }}
+          style={{
+            top: popoverPosition.top,
+            right: popoverPosition.right,
+            width: popoverPosition.width,
+          }}
         >
           <h2 className="theme-popover-title" id="appearance-popover-title">
             Appearance

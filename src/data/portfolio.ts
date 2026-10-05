@@ -451,9 +451,16 @@ export const techStack = [
   'PROJECT MANAGEMENT',
 ];
 
+export const contact = {
+  email: 'sapgarimella@gmail.com',
+  // Placeholder until the real number is confirmed.
+  phone: '+91 99999 99999',
+  location: 'Hyderabad, India',
+};
+
 export const socials: SocialLink[] = [
   { label: 'GitHub', href: 'https://github.com/SaiAditya02' },
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/sai-aditya-garimella-93aa282b3' },
-  { label: 'Email', href: 'mailto:sapgarimella@gmail.com' },
+  { label: 'Email', href: `mailto:${contact.email}` },
   { label: 'Resume', href: '/SaiAdityaResume.pdf' },
 ];
