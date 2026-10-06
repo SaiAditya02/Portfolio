@@ -27,3 +27,6 @@ dist-ssr
 .scratch/
 .bearing/state/
 .claude/settings.local.json
+
+# Impeccable review screenshots (regenerated on demand)
+.impeccable/review/
