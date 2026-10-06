@@ -23,14 +23,22 @@ make check   # the gate: lint, type-check and build
 
 ## Tech stack
 
-- **Framework:** React 19, TypeScript 6 and Vite 8 (`@vitejs/plugin-react`), with npm and `package-lock.json`.
-- **Animation:** anime.js 4 for the hero entrances and the terminal typing; Motion 14 (`motion/react`) for the navigation marker, open and close panels, and scroll effects.
-- **Styling:** plain CSS. Colour tokens live in `src/index.css`, shared layout in `src/styles/site.css`, and each theme has its own file.
+| | Technology | Version | Used for |
+| :---: | --- | --- | --- |
+| <img src="https://cdn.simpleicons.org/react" width="28" height="28" alt="React"> | **React** | 19 | The user interface, built from components |
+| <img src="https://cdn.simpleicons.org/typescript" width="28" height="28" alt="TypeScript"> | **TypeScript** | 6 | Typed code, checked with `tsc -b` on every build |
+| <img src="https://cdn.simpleicons.org/vite" width="28" height="28" alt="Vite"> | **Vite** | 8 | Dev server and production build (`@vitejs/plugin-react`) |
+| <img src="https://cdn.simpleicons.org/animedotjs" width="28" height="28" alt="anime.js"> | **anime.js** | 4 | Hero entrances and the terminal typing |
+| <img src="https://cdn.simpleicons.org/framer" width="28" height="28" alt="Motion (formerly Framer Motion)"> | **Motion** (formerly Framer Motion) | 14 | Navigation marker, open and close panels, and scroll effects (`motion/react`) |
+| <img src="https://cdn.simpleicons.org/css" width="28" height="28" alt="CSS"> | **CSS** | | Plain CSS: colour tokens in `src/index.css`, shared layout in `src/styles/site.css`, one file per theme |
+| <img src="https://cdn.simpleicons.org/googlefonts" width="28" height="28" alt="Google Fonts"> | **Google Fonts** | | Urbanist, Cormorant Garamond, Archivo and JetBrains Mono |
+| <img src="https://cdn.simpleicons.org/simpleicons/111111/ffffff" width="28" height="28" alt="Simple Icons"> | **Simple Icons** | | Tool logos (CC0), copied into the project; brands it lacks use a simple stand-in |
+| <img src="https://cdn.simpleicons.org/oxc" width="28" height="28" alt="Oxc"> | **oxlint** | 1 | Linting; with `tsc -b` and `vite build`, it runs in a git hook before every push |
+| <img src="https://cdn.simpleicons.org/npm" width="28" height="28" alt="npm"> | **npm** | | Package manager, locked with `package-lock.json` |
+| <img src="https://cdn.simpleicons.org/vercel/000000/ffffff" width="28" height="28" alt="Vercel"> | **Vercel** | | Hosting: a static site that redeploys on every push to `main` |
+
 - **Themes:** Lime Editorial and Dark & Techy, each in Light, Dark or System mode. The choice is remembered in the browser. A link can pick one with `?style=lime|terminal` and `?mode=light|dark|system`.
-- **Fonts:** Google Fonts: Urbanist, Cormorant Garamond, Archivo and JetBrains Mono.
-- **Icons:** brand logos from [Simple Icons](https://simpleicons.org) (CC0), copied into the project. Brands that Simple Icons does not include use a simple stand-in symbol.
-- **Quality checks:** oxlint, `tsc -b` and `vite build`. A git hook runs them before every push.
-- **Hosting:** a static site with no backend. The contact form opens an email draft.
+- **No backend:** the contact form opens an email draft.
 
 ## Built with Bearing
 
