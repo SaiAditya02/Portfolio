@@ -1,4 +1,5 @@
 import { MotionConfig } from 'motion/react'
+import { Analytics } from '@vercel/analytics/react'
 import './styles/site.css'
 import './styles/lime.css'
 import './styles/terminal.css'
@@ -32,6 +33,7 @@ function App() {
         </main>
         <Footer />
       </div>
+      <Analytics />
     </MotionConfig>
   )
 }
