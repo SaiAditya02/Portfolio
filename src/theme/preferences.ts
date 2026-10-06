@@ -1,55 +1,67 @@
+import { useSyncExternalStore } from 'react'
+
 // public/theme-init.js repeats these options, defaults and storage keys so it
 // can run before React loads. Keep both files in sync.
-export const paletteOptions = [
-  { id: 'theme_monochrome_editorial', label: 'Monochrome Editorial' },
-  { id: 'theme_amber_telemetry', label: 'Amber Telemetry' },
-  { id: 'theme_electric_cyan', label: 'Electric Cyan' },
-  { id: 'theme_acid_lime', label: 'Acid Lime' },
+export const styleOptions = [
+  { id: 'lime', label: 'Lime Editorial' },
+  { id: 'terminal', label: 'Dark & Techy' },
 ] as const
 
 export const appearanceOptions = ['light', 'dark', 'system'] as const
 
-export type Palette = (typeof paletteOptions)[number]['id']
+export type ThemeStyle = (typeof styleOptions)[number]['id']
 export type Appearance = (typeof appearanceOptions)[number]
 
 export type ThemePreferences = {
-  palette: Palette
+  style: ThemeStyle
   appearance: Appearance
 }
 
 export const DEFAULT_PREFERENCES: ThemePreferences = {
-  palette: 'theme_amber_telemetry',
-  appearance: 'dark',
+  style: 'lime',
+  appearance: 'system',
 }
 
-export function isPalette(value: string | undefined): value is Palette {
-  return paletteOptions.some((palette) => palette.id === value)
+const CHANGE_EVENT = 'portfolio-theme-change'
+
+export function isThemeStyle(value: string | undefined): value is ThemeStyle {
+  return styleOptions.some((option) => option.id === value)
 }
 
 export function isAppearance(value: string | undefined): value is Appearance {
   return appearanceOptions.some((appearance) => appearance === value)
 }
 
-export function readPreferences(): ThemePreferences {
-  const root = document.documentElement
+let snapshot: ThemePreferences = DEFAULT_PREFERENCES
 
-  return {
-    palette: isPalette(root.dataset.palette) ? root.dataset.palette : DEFAULT_PREFERENCES.palette,
-    appearance: isAppearance(root.dataset.appearance)
-      ? root.dataset.appearance
-      : DEFAULT_PREFERENCES.appearance,
-  }
+function getSnapshot() {
+  const root = document.documentElement
+  const style = isThemeStyle(root.dataset.style) ? root.dataset.style : DEFAULT_PREFERENCES.style
+  const appearance = isAppearance(root.dataset.appearance) ? root.dataset.appearance : DEFAULT_PREFERENCES.appearance
+  if (snapshot.style !== style || snapshot.appearance !== appearance) snapshot = { style, appearance }
+  return snapshot
 }
 
-export function applyPreferences({ palette, appearance }: ThemePreferences) {
+function subscribe(onChange: () => void) {
+  window.addEventListener(CHANGE_EVENT, onChange)
+  return () => window.removeEventListener(CHANGE_EVENT, onChange)
+}
+
+export function useThemePreferences() {
+  return useSyncExternalStore(subscribe, getSnapshot, () => DEFAULT_PREFERENCES)
+}
+
+export function applyPreferences({ style, appearance }: ThemePreferences) {
   const root = document.documentElement
-  root.dataset.palette = palette
+  root.dataset.style = style
   root.dataset.appearance = appearance
 
   try {
-    window.localStorage.setItem('portfolio-palette', palette)
+    window.localStorage.setItem('portfolio-style', style)
     window.localStorage.setItem('portfolio-appearance', appearance)
   } catch {
     // Preferences still apply for this page when browser storage is disabled.
   }
+
+  window.dispatchEvent(new Event(CHANGE_EVENT))
 }

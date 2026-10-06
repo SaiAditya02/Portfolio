@@ -66,19 +66,45 @@ export type SocialLink = {
 };
 
 export const navItems: NavItem[] = [
-  { label: 'ABOUT', href: '#about' },
-  { label: 'EXPERIENCE', href: '#experience' },
-  { label: 'PROJECTS', href: '#projects' },
-  { label: 'SKILLS', href: '#skills' },
-  { label: 'QA LAB', href: '#qa-lab' },
-  { label: 'CONTACT', href: '#contact' },
+  { label: 'About', href: '#about' },
+  { label: 'Experience', href: '#experience' },
+  { label: 'Projects', href: '#projects' },
+  { label: 'Skills', href: '#skills' },
+  { label: 'QA Lab', href: '#qa-lab' },
+  { label: 'How I test', href: '#how-i-test' },
+  { label: 'QA × AI', href: '#qa-ai' },
+  { label: 'Contact', href: '#contact' },
 ];
 
+// Proof values from the resume.
 export const metrics: Metric[] = [
-  { value: '1.5+', label: 'YEARS IN QA' },
-  { value: '03', label: 'AI TOOLS IN DAILY USE' },
-  { value: '04+', label: 'PRODUCTS TESTED IN PRODUCTION' },
+  { value: '1.5+', label: 'years in QA' },
+  { value: '3', label: 'AI tools in daily use' },
+  { value: '4+', label: 'products tested in production' },
+  { value: '40%', label: 'fewer bug escapes' },
+  { value: '50+', label: 'payment scenarios validated' },
+  { value: '10,000+', label: 'students a year covered' },
 ];
+
+// Page copy carried over from the old-theme portfolio.
+export const copy = {
+  role: 'QA Engineer 1',
+  company: 'Deepta AI',
+  microcopy: 'QA Engineer 1 · AI-assisted builder · Hyderabad, India · 2026',
+  eyebrow: 'QA engineer × product thinking × AI-assisted testing',
+  manifesto: ['I test systems.', 'I build with AI.', 'I ship quality.'],
+  lead: 'QA Engineer focused on understanding how products behave, finding what breaks, and using AI to build smarter testing workflows.',
+  aboutTitle: ["I don't just test features.", 'I investigate systems.'],
+  aboutIntro:
+    'I work across manual testing, functional validation, regression coverage, exploratory investigation, UAT, API testing, automation, performance checks, analytics QA and integration testing. My focus is on how the full product behaves as a system, not just whether a single screen looks correct.',
+  projectsTitle: "Systems I've tested.",
+  aiTitle: ["AI doesn't replace QA thinking.", 'It amplifies it.'],
+  aiIntro:
+    'I use AI as a force multiplier for speed, breadth, exploration, reasoning support, documentation and test scenario thinking. It helps me expand coverage quickly, draft bug reports, reason through requirements and challenge assumptions. Human QA judgment, product understanding and critical validation remain essential.',
+  contactTitle: 'Have a system worth breaking?',
+  contactIntro: "Let's talk about the product, the problem, or the edge case nobody thought about.",
+  footerLine: 'Built with curiosity. Tested with intent.',
+};
 
 export const aboutPoints: AboutPoint[] = [
   {
@@ -344,23 +370,23 @@ export const projects: Project[] = [
 
 export const skillGroups: SkillGroup[] = [
   {
-    title: 'TESTING',
+    title: 'Testing',
     items: ['Manual Testing', 'Exploratory QA', 'Regression Testing', 'UAT', 'Functional QA'],
   },
   {
-    title: 'APIs & INTEGRATIONS',
+    title: 'APIs & integrations',
     items: ['Postman', 'Razorpay', 'EaseBuzz', 'Google OAuth', 'Truecaller'],
   },
   {
-    title: 'WORKFLOW & TRACKING',
+    title: 'Workflow & tracking',
     items: ['Jira', 'Confluence', 'TestRail', 'Excel', 'Agile / Scrum'],
   },
   {
-    title: 'AI TOOLS · DAILY USE',
+    title: 'AI tools in daily use',
     items: ['ChatGPT', 'Claude', 'Gemini'],
   },
   {
-    title: 'AI USE CASES',
+    title: 'AI use cases',
     items: [
       'Test case generation',
       'Edge case brainstorming',
@@ -374,7 +400,7 @@ export const skillGroups: SkillGroup[] = [
 export const qaScenarios: QaScenario[] = [
   {
     id: 'happy-path',
-    label: 'HAPPY PATH',
+    label: 'Happy path',
     objective: 'Verify the expected login flow succeeds with valid credentials and the session is created correctly.',
     input: 'Valid username + valid password',
     expected: 'Authentication should succeed, redirect to the correct dashboard and reveal the expected account state.',
@@ -383,7 +409,7 @@ export const qaScenarios: QaScenario[] = [
   },
   {
     id: 'negative-test',
-    label: 'NEGATIVE TEST',
+    label: 'Negative test',
     objective: 'Confirm the system behaves correctly when credentials are invalid or a user attempts unauthorized access.',
     input: 'Invalid password or locked account',
     expected: 'Authentication should fail and a meaningful error should be displayed without exposing sensitive account details.',
@@ -392,7 +418,7 @@ export const qaScenarios: QaScenario[] = [
   },
   {
     id: 'boundary-test',
-    label: 'BOUNDARY TEST',
+    label: 'Boundary test',
     objective: 'Check system behavior at the threshold of valid input lengths, constraints and retry limits.',
     input: 'Minimum / maximum password length, maximum failed attempts',
     expected: 'The system should enforce the correct boundary rules and respond consistently without surprising state transitions.',
@@ -401,7 +427,7 @@ export const qaScenarios: QaScenario[] = [
   },
   {
     id: 'edge-case',
-    label: 'EDGE CASE',
+    label: 'Edge case',
     objective: 'Probe unusual or uncommon user states that are likely to fail in production-like conditions.',
     input: 'Password with special characters, session expiration, concurrent login attempts',
     expected: 'The application should remain stable, display predictable messaging and preserve correct security behavior.',
@@ -410,7 +436,7 @@ export const qaScenarios: QaScenario[] = [
   },
   {
     id: 'api-validation',
-    label: 'API VALIDATION',
+    label: 'API validation',
     objective: 'Verify the auth endpoint returns expected status codes, payloads and error semantics for valid and invalid requests.',
     input: 'HTTP request payloads for login attempts',
     expected: 'The API should return accurate responses and provide the UI with consistent signals for success and failure.',
@@ -419,7 +445,7 @@ export const qaScenarios: QaScenario[] = [
   },
   {
     id: 'exploratory-test',
-    label: 'EXPLORATORY TEST',
+    label: 'Exploratory test',
     objective: 'Investigate the flow like a user would, looking for friction, unexpected states and inconsistent system behavior.',
     input: 'Unscripted user interactions combined with product assumptions',
     expected: 'The system should behave predictably even when the journey deviates from the ideal path.',
@@ -429,32 +455,44 @@ export const qaScenarios: QaScenario[] = [
 ];
 
 export const flowSteps: FlowStep[] = [
-  { title: 'UNDERSTAND', description: 'Understand the product, users, requirements and business flow.' },
-  { title: 'EXPLORE', description: 'Look beyond predefined tests and investigate unexpected behavior.' },
-  { title: 'PLAN', description: 'Build a clear test strategy around risk, user impact and dependency mapping.' },
-  { title: 'TEST', description: 'Validate the expected behavior against real flows across the product surface.' },
-  { title: 'BREAK', description: 'Challenge assumptions and deliberately search for failure points.' },
-  { title: 'VALIDATE', description: 'Verify behavior across UI, API, integrations and data.' },
-  { title: 'AUTOMATE', description: 'Automate repeatable validation where automation adds measurable value.' },
-  { title: 'REPORT', description: 'Communicate findings with clarity, reproduction steps and business impact.' },
-  { title: 'VERIFY', description: 'Confirm the fix, test the regression and ensure the system behaves as intended.' },
+  { title: 'Understand', description: 'Understand the product, users, requirements and business flow.' },
+  { title: 'Explore', description: 'Look beyond predefined tests and investigate unexpected behavior.' },
+  { title: 'Plan', description: 'Build a clear test strategy around risk, user impact and dependency mapping.' },
+  { title: 'Test', description: 'Validate the expected behavior against real flows across the product surface.' },
+  { title: 'Break', description: 'Challenge assumptions and deliberately search for failure points.' },
+  { title: 'Validate', description: 'Verify behavior across UI, API, integrations and data.' },
+  { title: 'Automate', description: 'Automate repeatable validation where automation adds measurable value.' },
+  { title: 'Report', description: 'Communicate findings with clarity, reproduction steps and business impact.' },
+  { title: 'Verify', description: 'Confirm the fix, test the regression and ensure the system behaves as intended.' },
 ];
 
 export const techStack = [
-  'TESTING',
-  'AUTOMATION',
+  'Testing',
+  'Automation',
   'API',
-  'PERFORMANCE',
-  'DEVELOPMENT',
-  'VERSION CONTROL',
+  'Performance',
+  'Development',
+  'Version control',
   'AI',
-  'PROJECT MANAGEMENT',
+  'Project management',
+];
+
+export const aiTools = ['ChatGPT', 'Claude', 'Gemini'];
+
+export const aiUseCases = [
+  'Test case generation',
+  'Edge case brainstorming',
+  'Requirement analysis',
+  'Bug report drafting',
+  'Documentation',
+  'Code understanding',
+  'Test scenario exploration',
+  'Test data ideas',
 ];
 
 export const contact = {
   email: 'sapgarimella@gmail.com',
-  // Placeholder until the real number is confirmed.
-  phone: '+91 99999 99999',
+  phone: '+91 93817 36720',
   location: 'Hyderabad, India',
 };
 

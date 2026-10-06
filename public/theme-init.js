@@ -1,25 +1,25 @@
 // Runs before React to avoid a theme flash. Keep these lists, defaults and
 // storage keys in sync with src/theme/preferences.ts.
 (() => {
-  const palettes = [
-    'theme_monochrome_editorial',
-    'theme_amber_telemetry',
-    'theme_electric_cyan',
-    'theme_acid_lime',
-  ]
+  const styles = ['lime', 'terminal']
   const appearances = ['light', 'dark', 'system']
-  let palette = 'theme_amber_telemetry'
-  let appearance = 'dark'
+  let style = 'lime'
+  let appearance = 'system'
 
   try {
-    const savedPalette = window.localStorage.getItem('portfolio-palette')
+    const savedStyle = window.localStorage.getItem('portfolio-style')
     const savedAppearance = window.localStorage.getItem('portfolio-appearance')
-    if (palettes.includes(savedPalette)) palette = savedPalette
+    if (styles.includes(savedStyle)) style = savedStyle
     if (appearances.includes(savedAppearance)) appearance = savedAppearance
   } catch {
     // Defaults remain available when browser storage is disabled.
   }
 
-  document.documentElement.dataset.palette = palette
+  // A shared link can pick the look: ?style=terminal&mode=dark
+  const params = new URLSearchParams(window.location.search)
+  if (styles.includes(params.get('style'))) style = params.get('style')
+  if (appearances.includes(params.get('mode'))) appearance = params.get('mode')
+
+  document.documentElement.dataset.style = style
   document.documentElement.dataset.appearance = appearance
 })()

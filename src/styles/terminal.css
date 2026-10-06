@@ -1,0 +1,483 @@
+/* Dark & Techy: the portfolio as a test run. Monospaced detail, green pass marks, console panels. */
+
+.skin-terminal {
+  --font-body: 'Archivo', system-ui, sans-serif;
+  --font-display: 'Archivo', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --font-giant: 'JetBrains Mono', ui-monospace, monospace;
+  --title-weight: 750;
+  --radius: 12px;
+  --radius-btn: 8px;
+  background:
+    radial-gradient(60rem 30rem at 85% 0%, var(--glow), transparent 70%),
+    var(--bg);
+}
+
+.skin-terminal .brand {
+  font-family: var(--font-mono);
+  font-size: 0.98rem;
+  font-weight: 800;
+  color: var(--accent-text);
+}
+
+.brand-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 4px var(--glow);
+}
+
+.brand-path {
+  color: var(--soft);
+  font-weight: 400;
+}
+
+.skin-terminal .section-head h2 {
+  font-stretch: 82%;
+}
+
+.skin-terminal .section-label {
+  color: var(--soft);
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+}
+
+.skin-terminal .section-label .prompt {
+  color: var(--accent-text);
+}
+
+.skin-terminal .section-label::after {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 1em;
+  margin-left: 6px;
+  vertical-align: -0.15em;
+  background: var(--accent);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .skin-terminal .section-label::after {
+    animation: blink 1.1s steps(1) infinite;
+  }
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.skin-terminal .card {
+  box-shadow: inset 0 1px 0 color-mix(in srgb, var(--accent) 22%, transparent);
+}
+
+.skin-terminal .card-index,
+.skin-terminal .job-dates,
+.skin-terminal .step-number,
+.skin-terminal .lab-kicker,
+.skin-terminal .profile-role,
+.skin-terminal .tag,
+.skin-terminal .project-facts,
+.skin-terminal .preview-bar em,
+.skin-terminal .stack-list li,
+.skin-terminal .footer-copy {
+  font-family: var(--font-mono);
+}
+
+.skin-terminal .card-index::before {
+  content: '#';
+}
+
+.skin-terminal .step-number {
+  color: var(--accent-text);
+  font-size: 1.1rem;
+}
+
+.skin-terminal .step-number::before {
+  content: '[';
+}
+
+.skin-terminal .step-number::after {
+  content: ']';
+}
+
+.skin-terminal .step {
+  min-height: 0;
+}
+
+.skin-terminal .tag {
+  border-radius: 6px;
+}
+
+.skin-terminal .dash-list li::before {
+  width: 6px;
+  height: 6px;
+  top: 0.62em;
+  border-radius: 1px;
+}
+
+.skin-terminal .edge-list li::before {
+  background: var(--warn);
+}
+
+.skin-terminal .project-preview {
+  background: #0b1016;
+  font-family: var(--font-mono);
+}
+
+.skin-terminal .preview-bar {
+  border-color: #1f2a36;
+}
+
+.skin-terminal .preview-bar span:nth-child(1) {
+  background: #ff6b6b;
+}
+
+.skin-terminal .preview-bar span:nth-child(2) {
+  background: #f2c46d;
+}
+
+.skin-terminal .preview-bar span:nth-child(3) {
+  background: #46d98f;
+}
+
+.skin-terminal .preview-bar em {
+  color: #8e9bab;
+}
+
+.skin-terminal .preview-row {
+  color: #d8e1eb;
+  background: transparent;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 400;
+}
+
+.skin-terminal .preview-row::before {
+  content: 'PASS';
+  padding: 0 6px;
+  border-radius: 3px;
+  color: #0a0e13;
+  background: #46d98f;
+  font-weight: 800;
+}
+
+.skin-terminal .preview-check {
+  display: none;
+}
+
+.skin-terminal .lab-tabs button {
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+}
+
+.skin-terminal .lab-status {
+  border-radius: 2px;
+  background: var(--accent);
+  opacity: 1;
+}
+
+.skin-terminal .lab-tabs button.is-selected .lab-status {
+  background: var(--on-btn);
+}
+
+.skin-terminal .tool-strip-item {
+  font-family: var(--font-mono);
+  font-size: 1.05rem;
+}
+
+.skin-terminal .footer-giant {
+  color: color-mix(in srgb, var(--text) 10%, transparent);
+  font-size: clamp(3rem, 12vw, 11rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+
+.skin-terminal .about-intro {
+  font-family: var(--font-body);
+  font-weight: 500;
+}
+
+/* ---------- Hero ---------- */
+
+.terminal-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  align-items: center;
+  gap: 44px;
+  max-width: 1320px;
+  min-height: min(calc(100vh - 80px), 860px);
+  margin: 0 auto;
+  padding: 30px var(--gutter) 40px;
+}
+
+.th-micro,
+.th-eyebrow,
+.th-status {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+}
+
+.th-micro {
+  color: var(--soft);
+}
+
+.th-status {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 16px 0 26px;
+}
+
+.th-status li {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--soft);
+  background: var(--surface);
+}
+
+.th-status strong {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--accent-text);
+}
+
+.th-led {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 3px var(--glow);
+}
+
+.th-eyebrow {
+  margin-bottom: 14px;
+  color: var(--accent-text);
+  text-transform: uppercase;
+}
+
+.th-title {
+  font-size: clamp(2.8rem, 5.6vw, 5rem);
+  font-stretch: 78%;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.025em;
+}
+
+.th-accent {
+  color: var(--accent-text);
+}
+
+.th-lead {
+  max-width: 48ch;
+  margin-top: 22px;
+  color: var(--soft);
+  font-size: 1.1rem;
+}
+
+.th-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 28px;
+}
+
+/* The console keeps its dark glass in both modes: it is the product's terminal, not page chrome. */
+.th-console {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto auto;
+  height: min(560px, 72vh);
+  overflow: hidden;
+  border: 1px solid #1f2a36;
+  border-radius: 14px;
+  color: #d8e1eb;
+  background: #0b1118;
+  box-shadow: 0 40px 90px -40px rgb(0 0 0 / 70%);
+  font-family: var(--font-mono);
+}
+
+.th-bar {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 16px;
+  border-bottom: 1px solid #1f2a36;
+  color: #8e9bab;
+  font-size: 0.8rem;
+}
+
+.th-lights {
+  display: flex;
+  gap: 6px;
+}
+
+.th-lights span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ff6b6b;
+}
+
+.th-lights span:nth-child(2) {
+  background: #f2c46d;
+}
+
+.th-lights span:nth-child(3) {
+  background: #46d98f;
+}
+
+.th-run {
+  margin-left: auto;
+  color: #f2c46d;
+}
+
+.th-run.is-done {
+  color: #46d98f;
+}
+
+.th-screen {
+  padding: 14px 16px;
+  overflow-y: auto;
+  font-size: 0.85rem;
+  line-height: 1.8;
+}
+
+.t-line {
+  white-space: pre-wrap;
+}
+
+.t-cmd,
+.t-warn {
+  color: #f2c46d;
+}
+
+.t-muted {
+  color: #8e9bab;
+}
+
+.t-line a {
+  color: #46d98f;
+}
+
+.t-jump {
+  text-decoration: none;
+}
+
+.t-jump:hover {
+  text-decoration: underline;
+}
+
+.t-badge {
+  display: inline-block;
+  padding: 0 6px;
+  border-radius: 3px;
+  color: #0a0e13;
+  background: #46d98f;
+  font-weight: 800;
+}
+
+.t-badge-run {
+  background: #f2c46d;
+}
+
+.t-caret {
+  display: inline-block;
+  width: 8px;
+  height: 1.05em;
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  background: #f2c46d;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .t-caret {
+    animation: blink 1s steps(1) infinite;
+  }
+
+  .t-enter {
+    animation: t-enter 220ms ease-out both;
+  }
+}
+
+@keyframes t-enter {
+  from {
+    opacity: 0;
+    transform: translateX(-8px);
+  }
+}
+
+.th-prompt {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  border-top: 1px solid #1f2a36;
+  color: #f2c46d;
+}
+
+.th-prompt input {
+  flex: 1;
+  border: 0;
+  outline: none;
+  color: #d8e1eb;
+  background: transparent;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  caret-color: #46d98f;
+}
+
+.th-prompt input::placeholder {
+  color: #6c7889;
+}
+
+.th-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 0 16px 14px;
+}
+
+.th-chips button {
+  padding: 4px 10px;
+  border: 1px solid #1f2a36;
+  border-radius: 999px;
+  color: #8e9bab;
+  background: transparent;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  cursor: pointer;
+}
+
+.th-chips button:hover:not(:disabled) {
+  border-color: #46d98f;
+  color: #46d98f;
+}
+
+.th-chips button:disabled {
+  cursor: progress;
+  opacity: 0.5;
+}
+
+@media (max-width: 900px) {
+  .terminal-hero {
+    grid-template-columns: minmax(0, 1fr);
+    min-height: 0;
+  }
+
+  .th-console {
+    height: 480px;
+  }
+}
+
+@media (max-width: 600px) {
+  .brand-path {
+    display: none;
+  }
+}
